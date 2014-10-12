@@ -2,7 +2,7 @@
 
 liczba_cech = 5;
 liczba_symboli = 10;
-max_value = 5;
+max_value = 20;
 
 generate_csv(liczba_symboli,liczba_cech,max_value);
 % macierz danych wejsciowych

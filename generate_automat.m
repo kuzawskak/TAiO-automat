@@ -41,13 +41,6 @@ stan_poczatkowy = zeros(1,liczba_symboli);
 stan_poczatkowy(1) = 1;
 
 
- 
-
-       
- 
-
-
-
 
 
 matrix = zeros(liczba_symboli,liczba_symboli);
