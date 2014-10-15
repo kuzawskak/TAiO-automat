@@ -19,4 +19,12 @@ st_wy = macierz_funkcji(n)* stan_wejsciowy;
 
 end
 
+%'mnozenie' macierzy i wektora
+function stan_wynikowy = przejscie_automatu(strona_macierzy,obecny_stan)
 
+stan_wynikowy=strona_macierzy*obecny_stan
+%TO DO zrobic mnozenie macierzy w petli
+%for i=1:size(strona_macierzy,1)
+ %   for j=1:size(strona_macierzy,2)
+    
+end
