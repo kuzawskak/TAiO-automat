@@ -62,6 +62,6 @@ automat = generate_automat(zbior_uczacy,liczba_symboli,5);
 %mapowania
 index = oblicz(automat,sym);
 symbol = mapowanie_symboli(index)
-
+%TODO : fix error!!!11
 
 
