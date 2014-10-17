@@ -6,6 +6,9 @@
 # Windows default autosave extension
 *.asv
 
+# CSV files
+*.dat
+
 # OSX / *nix default autosave extension
 *.m~
 
