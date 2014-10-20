@@ -1,6 +1,10 @@
 %%%%%%%%%!!TZREBA ZADEKLAROWAC ZMIENNA GLOBALNA tutaj i w pliku funkcji
 %%%%%%%%%bledu
 global a;
+ global liczba_stron;
+  global liczba_wierszy;
+  global liczba_kolumn;
+  global zbior_uczacy;
 %skrypt testowy z podanymi z góry wartosciami 
 liczba_cech = 5;
 liczba_symboli = 10;
@@ -29,11 +33,15 @@ x=find_symbol(151,liczba_symboli,liczba_kopii);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   a = 100;
   f_handler = @func_bledu;
+liczba_stron = liczba_cech;
+liczba_wierszy = liczba_symboli;
 
-
- % [xopt, fopt] = pso(f_handler, 5);
-  l = func_bledu(5);
- 
+liczba_kolumn = liczba_symboli;
+matrix_as_vector = permute(reshape(automat,liczba_symboli*liczba_symboli*liczba_cech,1,1),[2 1]);
+  [xopt, fopt] = pso(f_handler,500);%%liczba_symboli*liczba_symboli*liczba_cech );
+%  l = func_bledu(5);
+ xopt
+ %normalizacja
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   
 disp('testowany symbol:');
