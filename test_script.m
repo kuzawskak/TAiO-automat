@@ -1,9 +1,14 @@
+%%%%%%%%%!!TZREBA ZADEKLAROWAC ZMIENNA GLOBALNA tutaj i w pliku funkcji
+%%%%%%%%%bledu
+global a;
 %skrypt testowy z podanymi z góry wartosciami 
-
 liczba_cech = 5;
 liczba_symboli = 10;
 liczba_kopii=100;
 max_value = 20;
+
+   
+
 
 %generujemy swoj plik csv
 generate_csv(liczba_symboli,liczba_cech,max_value);
@@ -20,6 +25,17 @@ automat = generate_automat(liczba_symboli,5);
 %wykonujemy symulacje pracy automatu dla pierwszego wektora ze zbioru
 %uczacego
 x=find_symbol(151,liczba_symboli,liczba_kopii);
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  a = 100;
+  f_handler = @func_bledu;
+
+
+ % [xopt, fopt] = pso(f_handler, 5);
+  l = func_bledu(5);
+ 
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  
 disp('testowany symbol:');
 wszystkie_symbole(x)
 
@@ -34,4 +50,8 @@ if(x==wynik)
 else
     disp('NIE ZGADZA SIE');
 end
-    
+
+
+
+
+

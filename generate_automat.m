@@ -17,3 +17,9 @@ for i=1:liczba_podzialow
 end
 
 end
+
+
+
+
+
+
