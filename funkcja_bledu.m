@@ -18,6 +18,7 @@ for i=1:size(zbior_uczacy,2)
     end
 end
 
+
 end
 
 
