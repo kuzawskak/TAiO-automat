@@ -23,7 +23,7 @@ wszystkie_symbole=mapowanie_symboli( 'in_file.dat', liczba_symboli );
 %przygotowanie gotowego zbior uczacego do uzycia w automacie
 zbior_uczacy=prepare_training_dataset('in_file.dat', liczba_symboli, liczba_cech, 5,liczba_kopii);
 
-%GENERUJAMY  AUTOMAT - w postaci tabeli funkcji przejscia
+%GENERUJAMY AUTOMAT - w postaci tabeli funkcji przejscia
 automat = generate_automat(liczba_symboli,5);
 
 %wykonujemy symulacje pracy automatu dla pierwszego wektora ze zbioru
@@ -38,27 +38,52 @@ liczba_wierszy = liczba_symboli;
 
 liczba_kolumn = liczba_symboli;
 matrix_as_vector = permute(reshape(automat,liczba_symboli*liczba_symboli*liczba_cech,1,1),[2 1]);
-  [xopt, fopt] = pso(f_handler,500);%%liczba_symboli*liczba_symboli*liczba_cech );
+options = PSO('options');
+options.niter = 1000;
+options.npart = 60;
+  [xopt, fopt] = pso(f_handler,liczba_symboli*liczba_symboli*liczba_cech );
+  
 %  l = func_bledu(5);
- xopt
+maxx=0;
+new_matrix=reshape(xopt, liczba_wierszy, liczba_wierszy, liczba_stron);
+vec=zeros(liczba_wierszy);
+for i=1:liczba_stron
+    for j=1:liczba_wierszy
+    maxx=max(new_matrix(:,j,i));
+        for k=1:liczba_wierszy
+            if(new_matrix(k,j,i)==maxx)
+                new_matrix(k,j,i)=1;
+            else
+                new_matrix(k,j,i)=0;
+            end
+        end
+    end
+end
+
+ fopt
  %normalizacja
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   
 disp('testowany symbol:');
 wszystkie_symbole(x)
 
-wynik=automat_simulation( zbior_uczacy(151,:), automat );
+caly_blad=0;
+
+for i=1:size(zbior_uczacy,2)
+    wynik=automat_simulation( zbior_uczacy(i,:), new_matrix );
+    wynik2=find_symbol(i,liczba_symboli,100);
+    if(wynik~=wynik2)
+        caly_blad=caly_blad+1
+    end
+end
+   
+disp('blaaaaaaad')
+caly_blad/size(zbior_uczacy,2)
+        
+    
 
 %symbol jak otrzymalismy po zakonczeniu pracy automatu
 symbol=wszystkie_symbole(wynik)
-
-% NA TEJ ZASADZIE BEDZIE TRZEBA W FUNKCJI BLEDU DAWAC '0' LUB '1'
-if(x==wynik)
-    disp('ZGADZA SIE');
-else
-    disp('NIE ZGADZA SIE');
-end
-
 
 
 

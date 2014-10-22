@@ -8,6 +8,7 @@ blad = 0;
 wynik=0;
 
 %iterujemy po wszystkich wektorach ze zbioru uczacego
+
 for i=1:size(zbior_uczacy,2)
     x=find_symbol(i,liczba_symboli,liczba_kopii);
     wynik=automat_simulation( zbior_uczacy(i,:), macierz_funkcji );
@@ -16,6 +17,7 @@ for i=1:size(zbior_uczacy,2)
         blad=blad+1;
     end
 end
+
 
 end
 
