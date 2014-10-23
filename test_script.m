@@ -38,11 +38,14 @@ liczba_wierszy = liczba_symboli;
 
 liczba_kolumn = liczba_symboli;
 matrix_as_vector = permute(reshape(automat,liczba_symboli*liczba_symboli*liczba_cech,1,1),[2 1]);
-options = PSO('options');
-options.niter = 1000;
-options.npart = 60;
-  [xopt, fopt] = pso(f_handler,liczba_symboli*liczba_symboli*liczba_cech );
+% options = PSO('options');
+% options.niter = 1000;
+% options.npart = 60;
+% [xopt, fopt] = pso(f_handler,liczba_symboli*liczba_symboli*liczba_cech );
   
+[xopt, fopt] = PSO(f_handler,liczba_symboli*liczba_symboli*liczba_cech );
+  
+
 %  l = func_bledu(5);
 maxx=0;
 new_matrix=reshape(xopt, liczba_wierszy, liczba_wierszy, liczba_stron);
@@ -64,22 +67,21 @@ end
  %normalizacja
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   
-disp('testowany symbol:');
-wszystkie_symbole(x)
-
-caly_blad=0;
-
-for i=1:size(zbior_uczacy,2)
+c_blad = 0;
+for i=1:size(zbior_uczacy,1)
+   % zbior_uczacy(i,:)
+   % i
     wynik=automat_simulation( zbior_uczacy(i,:), new_matrix );
     wynik2=find_symbol(i,liczba_symboli,100);
     if(wynik~=wynik2)
-        caly_blad=caly_blad+1
+        c_blad=c_blad+1
+    else disp('brak bledu');
     end
 end
-   
-disp('blaaaaaaad')
-caly_blad/size(zbior_uczacy,2)
-        
+
+    
+disp('Blad clakowity obliczen');     
+blad =  c_blad/size(zbior_uczacy,1)
     
 
 %symbol jak otrzymalismy po zakonczeniu pracy automatu

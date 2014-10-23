@@ -19,8 +19,8 @@ for i = 0:liczba_symboli-1
     for powt = 2:liczba_kopii    
         for cecha = 1:liczba_cech
             zbior_uczacy(i*liczba_kopii+powt,cecha) = dane_wejsciowe(i+1,cecha)+ abs(rozklad_normalny(0,3));
-            %ale na razie nie wiem jak wygenerowac rozklad z paraemtrami
-            %innymi niz 0 i 1
+            % ale na razie nie wiem jak wygenerowac rozklad z paraemtrami
+            % innymi niz 0 i 1
         end
     end
 end
@@ -45,14 +45,15 @@ zbior_uczacy
 %podzial na podprzedzialy A1,...,An
 
 n=size(zbior_uczacy);
-ready_training_dataset = zeros(n(1),n(2));
+ready_training_dataset = ones(n(1),n(2));
 ulamek = 1/liczba_podzialow;
 
 for wiersz = 1:n(1)
     for kolumna = 1:n(2)
-         for iter=0:liczba_podzialow
-            if(zbior_uczacy(wiersz,kolumna)<(iter+1)*ulamek && zbior_uczacy(wiersz,kolumna)>= iter*ulamek)
-                ready_training_dataset(wiersz,kolumna) = iter+1;
+        for iter=1:liczba_podzialow
+            if(zbior_uczacy(wiersz,kolumna)<iter*ulamek && zbior_uczacy(wiersz,kolumna)>= (iter-1)*ulamek)
+                ready_training_dataset(wiersz,kolumna) = iter;
+            
             end
          end
     end

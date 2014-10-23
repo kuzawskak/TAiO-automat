@@ -26,7 +26,7 @@
     end
 
   
-  blad = funkcja_bledu(matrix, zbior_uczacy,liczba_wierszy,100)
+  blad = funkcja_bledu(matrix, zbior_uczacy,liczba_wierszy,100);
   
   
   end
