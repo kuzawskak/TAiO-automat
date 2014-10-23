@@ -74,8 +74,7 @@ for i=1:size(zbior_uczacy,1)
     wynik=automat_simulation( zbior_uczacy(i,:), new_matrix );
     wynik2=find_symbol(i,liczba_symboli,100);
     if(wynik~=wynik2)
-        c_blad=c_blad+1
-    else disp('brak bledu');
+        c_blad=c_blad+1;
     end
 end
 

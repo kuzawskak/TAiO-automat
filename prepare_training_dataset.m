@@ -3,7 +3,7 @@ function [ ready_training_dataset ] = prepare_training_dataset(csvfile, liczba_s
 %ich iloœæ przez rozk³ad i normalizujemy, dzielimy na przedzialy
 
 % macierz danych wejsciowych
-dane_wejsciowe = csvread(csvfile,0,1)
+dane_wejsciowe = csvread(csvfile,0,1);
 
 %rozszerzamy macierz do zbioru uczacego - bedzie x razy wieksza, gdzie x=liczba_kopii
 %zbior_uczacy = int(liczba_kopii*liczba_symboli,liczba_cech);
@@ -59,7 +59,7 @@ for wiersz = 1:n(1)
     end
 end
 
-ready_training_dataset
+ready_training_dataset;
 
 end
 

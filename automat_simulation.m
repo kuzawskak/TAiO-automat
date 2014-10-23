@@ -15,7 +15,7 @@ for i=1:length(vector)
 % size(matrix_of_transitions,1)
 % size(matrix_of_transitions,2)
 % size(matrix_of_transitions,3)
- vector(i)
+ vector(i);
 % matrix_of_transitions(:,:,vector(i))
 
     next_state=matrix_of_transitions(:,:,vector(i))*prev_state;
