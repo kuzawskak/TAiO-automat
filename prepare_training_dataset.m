@@ -1,4 +1,4 @@
-function [ ready_training_dataset ] = prepare_training_dataset(csvfile, liczba_symboli, liczba_cech, liczba_podzialow,liczba_kopii )
+function [ ready_training_dataset ] = prepare_training_dataset(csvfile, liczba_symboli, liczba_cech, liczba_kopii )
 %PREPARE_TRAINING_DATASET zczytujemy dane do zbioru ucz¹cego, zwiêkszamy
 %ich iloœæ przez rozk³ad i normalizujemy, dzielimy na przedzialy
 
@@ -41,16 +41,14 @@ for i=1:size(zbior_uczacy,1)
     end
 end
 
-zbior_uczacy
 %podzial na podprzedzialy A1,...,An
-
 n=size(zbior_uczacy);
 ready_training_dataset = ones(n(1),n(2));
-ulamek = 1/liczba_podzialow;
+ulamek = 1/liczba_cech;
 
 for wiersz = 1:n(1)
     for kolumna = 1:n(2)
-        for iter=1:liczba_podzialow
+        for iter=1:liczba_cech
             if(zbior_uczacy(wiersz,kolumna)<iter*ulamek && zbior_uczacy(wiersz,kolumna)>= (iter-1)*ulamek)
                 ready_training_dataset(wiersz,kolumna) = iter;
             
@@ -59,7 +57,6 @@ for wiersz = 1:n(1)
     end
 end
 
-ready_training_dataset;
 
 end
 
