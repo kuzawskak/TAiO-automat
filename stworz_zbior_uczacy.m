@@ -1,4 +1,4 @@
-function [ ready_training_dataset ] = prepare_training_dataset(csvfile, liczba_symboli, liczba_cech, liczba_kopii )
+function [ ready_training_dataset ] = stworz_zbior_uczacy(csvfile, liczba_symboli, liczba_cech, liczba_kopii,srednia, wariancja )
 %PREPARE_TRAINING_DATASET zczytujemy dane do zbioru ucz¹cego, zwiêkszamy
 %ich iloœæ przez rozk³ad i normalizujemy, dzielimy na przedzialy
 
@@ -18,7 +18,7 @@ end
 for i = 0:liczba_symboli-1 
     for powt = 2:liczba_kopii    
         for cecha = 1:liczba_cech
-            zbior_uczacy(i*liczba_kopii+powt,cecha) = dane_wejsciowe(i+1,cecha)+ abs(rozklad_normalny(0,3));
+            zbior_uczacy(i*liczba_kopii+powt,cecha) = dane_wejsciowe(i+1,cecha)+ abs(rozklad_normalny(srednia, wariancja ));
             % ale na razie nie wiem jak wygenerowac rozklad z paraemtrami
             % innymi niz 0 i 1
         end

@@ -9,8 +9,6 @@
   global liczba_kopii;
   
   blad = 0;
-  maxx=0;
-  wynik=0;
   
   %zamien wektor na macierz 3-wymiarowa
   matrix = reshape(matrix_as_vector,liczba_wierszy,liczba_wierszy,liczba_stron);
@@ -30,8 +28,8 @@
 
 %iterujemy po wszystkich wektorach ze zbioru uczacego
 for i=1:size(zbior_uczacy,1)
-    x=find_symbol(i,liczba_wierszy,liczba_kopii);
-    wynik=automat_simulation( zbior_uczacy(i,:), matrix );
+    x=znajdz_symbol(i,liczba_wierszy,liczba_kopii);
+    wynik=symulacja_automatu( zbior_uczacy(i,:), matrix );
     %sprawdzamy czy wynik automatu jest prawidlowy, jesli nie, to zwiekszamy blad 
     if(x~=wynik)
         blad=blad+1;

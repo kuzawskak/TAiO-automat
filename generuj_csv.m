@@ -3,7 +3,7 @@
 % max_value - wartosc maksymalna dla wartosci cechy
 % cechy beda losowane z przedzialu od 0 do max_value
 
-function [] = generate_csv(l_sym, l_cech, max_value)
+function [] = generuj_csv(l_sym, l_cech, max_value)
 
 A= rand(l_sym,l_cech+1)*(max_value+1);
 A = uint16(A);

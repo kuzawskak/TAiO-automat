@@ -1,4 +1,4 @@
-function matrix_of_transitions= generate_automat(liczba_symboli,liczba_podzialow)
+function matrix_of_transitions= generuj_automat(liczba_symboli,liczba_podzialow)
 
 % losowanie funkcji przejscia
 matrix_of_transitions=zeros(liczba_symboli,liczba_symboli,liczba_podzialow);

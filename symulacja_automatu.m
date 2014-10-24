@@ -1,4 +1,4 @@
-function symbol = automat_simulation( vector, matrix_of_transitions )
+function symbol = symulacja_automatu( vector, matrix_of_transitions )
 %AUTOMAT_SIMULATION symulacja pracy automatu, mnozenie macierzy i
 %wypisywanie wynikowego stanu, na koniec znajdowany jest indeks jedynki w
 %wektorze, potrzebny do zmapowania symbolu
