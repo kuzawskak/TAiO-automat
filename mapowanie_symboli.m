@@ -1,10 +1,10 @@
-function [ symbols ] = mapowanie_symboli( csvfile, liczba_symboli )
+function [ symbole ] = mapowanie_symboli( csvfile, liczba_symboli )
 %MAPOWANIE_SYMBOLI 
 % mapowanie symboli to wektor gdzie indeksom od 0 do liczba_symboli
 % odpowiadaja char-y z tablicy wejsciowej - wykorzystamy na koniec
 % dzialania programu - gdy bedziemy odczytywac wynik dla elemntu testowego
 
-symbols = char(1,liczba_symboli);
+symbole = char(1,liczba_symboli);
 fid = fopen(csvfile);
 
 %Preallocate a cell array (ideally slightly larger than is needed)
@@ -31,7 +31,7 @@ for iLine = 1:lineIndex-1
     lineData = textscan(lineArray{iLine},'%s');
     %Remove cell encapsulation
     lineData = lineData{1};            
-    symbols(iLine) = lineData{1}(1);
+    symbole(iLine) = lineData{1}(1);
     %Overwrite line data
     lineArray(iLine,1:numel(lineData)) = lineData;
 end  
