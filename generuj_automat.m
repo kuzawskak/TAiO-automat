@@ -1,16 +1,16 @@
-function matrix_of_transitions= generuj_automat(liczba_symboli,liczba_podzialow)
+function macierz_przejsc= generuj_automat(liczba_symboli,liczba_podzialow)
 
-% losowanie funkcji przejscia
-matrix_of_transitions=zeros(liczba_symboli,liczba_symboli,liczba_podzialow);
+% GENERUJ_AUTOMAT - losowanie funkcji przejscia automatu
+macierz_przejsc = zeros(liczba_symboli,liczba_symboli,liczba_podzialow);
 
-for i=1:liczba_podzialow
-    for j=1:liczba_symboli
-        r=randi(liczba_symboli);
-        for k=1:liczba_symboli;
-            if(k==r)
-                matrix_of_transitions(k,j,i)=1;
+for i = 1 : liczba_podzialow
+    for j = 1 : liczba_symboli
+        r = randi(liczba_symboli);
+        for k = 1 : liczba_symboli;
+            if(k == r)
+                macierz_przejsc(k,j,i) = 1;
             else
-                matrix_of_transitions(k,j,i)=0;
+                macierz_przejsc(k,j,i) = 0;
             end
         end
     end

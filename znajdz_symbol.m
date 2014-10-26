@@ -1,9 +1,9 @@
-function symbol = znajdz_symbol(vector_index, liczba_symboli, liczba_kopii)
-%FIND_SYMBOL znajduje jaki symbol jest reprezentowany przez dany wektor
+function symbol = znajdz_symbol(indeks, liczba_symboli, liczba_kopii)
+%ZNAJDZ_SYMBOL - znajduje jaki symbol jest reprezentowany przez dany wektor
 
-for i=1:liczba_symboli
-    if (vector_index<=i*liczba_kopii)
-        symbol=i;
+for i = 1 : liczba_symboli
+    if (indeks <= i * liczba_kopii)
+        symbol = i;
         break;
     end
 end

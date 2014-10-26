@@ -1,17 +1,17 @@
-function symbol = symulacja_automatu( vector, matrix_of_transitions )
-%AUTOMAT_SIMULATION symulacja pracy automatu, mnozenie macierzy i
+function symbol = symulacja_automatu( wektor, macierz_przejsc )
+%SYMULACJA_AUTOMATU symulacja pracy automatu, mnozenie macierzy i
 %wypisywanie wynikowego stanu, na koniec znajdowany jest indeks jedynki w
 %wektorze, potrzebny do zmapowania symbolu
 
-prev_state=zeros(size(matrix_of_transitions,1),1);
-prev_state(1)=1;
-next_state=prev_state;
+pop_stan = zeros(size(macierz_przejsc,1),1);
+pop_stan(1) = 1;
+nast_stan = pop_stan;
 
-for i=1:length(vector)
+for i = 1 : length(wektor)
     %Narazie zwykle mnozenie, bo dla 0 i 1 to bedzie dzialac, potem trzeba dac wzor od Homendy
-    next_state=matrix_of_transitions(:,:,vector(i))*prev_state;
-    prev_state=next_state;
+    nast_stan = macierz_przejsc(:,:,wektor(i))*pop_stan;
+    pop_stan = nast_stan;
 end
 
-symbol=find(next_state);
+symbol = find(nast_stan);
 end
