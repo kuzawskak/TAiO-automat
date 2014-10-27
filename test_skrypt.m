@@ -5,15 +5,21 @@ global liczba_stron;
 global liczba_wierszy;
 global zbior_uczacy;
 global liczba_kopii;
-  
-%skrypt testowy z podanymi z góry wartosciami 
-liczba_symboli = 10;
-liczba_cech = 5;
-liczba_kopii = 100;
-max_wartosc = 20;
-liczba_symboli_do_testu = 10;
+
+%Pobranie wartoœci z GUI
+handles = guidata(gcf);
+
+%Przypisanie wartoœci
+liczba_cech = str2double(get(handles.cechy,'String'));
+liczba_symboli = str2double(get(handles.symbole,'String'));
+liczba_kopii = str2double(get(handles.kopie,'String'));
+max_wartosc = str2double(get(handles.max,'String'));
+liczba_iteracji = str2double(get(handles.iteracje,'String'));
+liczba_rojow = str2double(get(handles.roje,'String'));
+
 srednia = 0;
 wariancja = 3;
+liczba_symboli_testowych = 10;
 
 plik_wejsciowy = 'plik_wejsciowy.dat';
 
@@ -38,7 +44,12 @@ f_handler = @funkcja_bledu;
 liczba_stron = liczba_cech;
 liczba_wierszy = liczba_symboli;
 
-[xopt, fopt] = PSO(f_handler, liczba_symboli * liczba_symboli * liczba_cech );
+%Pobierz opcje PSO
+opcje = PSO('options');
+opcje.npart = liczba_rojow;
+opcje.niter = liczba_iteracji;
+
+[xopt, fopt] = PSO(f_handler, liczba_symboli * liczba_symboli * liczba_cech, opcje);
 
 maxx = 0;
 macierz_z_pso = reshape(xopt, liczba_wierszy, liczba_wierszy, liczba_stron);
@@ -68,11 +79,13 @@ end
 blad = c_blad / size(zbior_uczacy, 1);
 disp(sprintf('Blad calkowity obliczen dla zbioru uczacego: %f', blad))   
 
-blad2 = uzyj_zbioru_testowego(liczba_symboli_do_testu, macierz_z_pso, ...
-    wszystkie_symbole) / liczba_symboli_do_testu;
+blad2 = uzyj_zbioru_testowego(liczba_symboli_testowych, macierz_z_pso, ...
+    wszystkie_symbole) / liczba_symboli_testowych;
 disp(sprintf('Blad calkowity obliczen dla zbioru testowego: %f', blad2))  
 
 %koniec mierzenia czasu
 toc
+
+msgbox({'Operation' 'Completed'});
 
 end
