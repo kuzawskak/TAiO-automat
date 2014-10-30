@@ -16,10 +16,10 @@ liczba_kopii = str2double(get(handles.kopie,'String'));
 max_wartosc = str2double(get(handles.max,'String'));
 liczba_iteracji = str2double(get(handles.iteracje,'String'));
 liczba_rojow = str2double(get(handles.roje,'String'));
+liczba_symboli_testowych = str2double(get(handles.symbole_testowe,'String'));
 
 srednia = 0;
 wariancja = 3;
-liczba_symboli_testowych = 10;
 
 plik_wejsciowy = 'plik_wejsciowy.dat';
 
@@ -79,13 +79,18 @@ end
 blad = c_blad / size(zbior_uczacy, 1);
 disp(sprintf('Blad calkowity obliczen dla zbioru uczacego: %f', blad))   
 
-blad2 = uzyj_zbioru_testowego(liczba_symboli_testowych, macierz_z_pso, ...
-    wszystkie_symbole) / liczba_symboli_testowych;
+[blad2, wiadomosc] = uzyj_zbioru_testowego(liczba_symboli_testowych, macierz_z_pso, ...
+    wszystkie_symbole);
+blad2 = blad2 / liczba_symboli_testowych;
 disp(sprintf('Blad calkowity obliczen dla zbioru testowego: %f', blad2))  
 
 %koniec mierzenia czasu
-toc
+czas = toc;
 
-msgbox({'Operation' 'Completed'});
+wiadomosc{liczba_symboli_testowych + 2} = ['B³¹d ca³kowity: ', num2str(blad)];
+wiadomosc{liczba_symboli_testowych + 3} = ['Blad calkowity obliczen dla zbioru testowego: ', num2str(blad2)];
+wiadomosc{liczba_symboli_testowych + 4} = ['Ca³kowity czas obliczeñ: ', num2str(czas)];
+
+msgbox(wiadomosc);
 
 end
