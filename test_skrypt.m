@@ -5,6 +5,8 @@ global liczba_stron;
 global liczba_wierszy;
 global zbior_uczacy;
 global liczba_kopii;
+%TODO - dodac sprawdzanie czy nie jest wiekszy niz liczba stanow
+global ograniczenie_automatu;
 
 %Pobranie wartoœci z GUI
 handles = guidata(gcf);
@@ -34,11 +36,18 @@ wszystkie_symbole = mapowanie_symboli(plik_wejsciowy, liczba_symboli);
 zbior_uczacy = stworz_zbior_uczacy(plik_wejsciowy, liczba_symboli, ...
     liczba_cech, liczba_kopii, srednia, wariancja );
 
-%GENERUJAMY AUTOMAT - w postaci tabeli funkcji przejscia
-automat = generuj_automat(liczba_symboli, liczba_cech);
 
+%%%%%%%%    dorzucenie elemntow obcych do zbioru uczacego (DODAMY NA KONIEC
+%%%%%%%%    MACIERZY)
+
+
+
+%GENERUJAMY AUTOMAT - w postaci tabeli funkcji przejscia
+automat = generuj_automat(liczba_symboli, liczba_cech)
+    
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 a = 100;
+ograniczenie_automatu = 4;
 f_handler = @funkcja_bledu;
 liczba_stron = liczba_cech;
 liczba_wierszy = liczba_symboli;

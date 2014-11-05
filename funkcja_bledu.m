@@ -1,5 +1,6 @@
   function blad = funkcja_bledu(wektor_z_macierzy3d)
   
+wektor_z_macierzy3d
 % Macierz funkcji jest 3-wymiarowa, wygenerowana wczesniej przez funkcje
 %'generuj automat' Zbior uczacy wygenerowany wczesniej przez funkcje
 %'stworz_zbior_uczacy' Liczba symboli(=liczba wierszy) i Liczba kopii 
