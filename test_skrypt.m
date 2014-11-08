@@ -46,7 +46,7 @@ ograniczenie_automatu_niedet = 4;
 
 %GENERUJAMY AUTOMAT - w postaci tabeli funkcji przejscia
 czy_niedet=-1;
-automat = generuj_automat(liczba_symboli, liczba_cech)
+automat = generuj_automat(liczba_symboli, liczba_cech);
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 a = 100;

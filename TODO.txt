@@ -2,4 +2,3 @@
 ~ zmieniæ mnozenie w macierzy (wg wzoru homendy)
 ~ sprawdzac czy ograniczenie nie wychodzi poza liczbe klas
 ~ dodac stany odrzucaj¹ce do obu automatow
-~ generowac symbole obce w zbiorze ucz¹cym i testuj¹cym

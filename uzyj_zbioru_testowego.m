@@ -12,13 +12,17 @@ tmp_wektor = randperm(size(zbior_uczacy, 1), ilosc_elem);
 
 for i = 1 : ilosc_elem,
     x = znajdz_symbol(tmp_wektor(i), liczba_wierszy, liczba_kopii);
+    if(x~=-1)
     disp(sprintf('%d Testowano symbol: %c', i, wektor_symboli(x)))
     wynik = symulacja_automatu(zbior_uczacy(tmp_wektor(i), :), macierz_przejsc);
     disp(sprintf('Otrzymano symbol: %c', wektor_symboli(wynik)))
     
     wiadomosc{i} = [num2str(i) ' Testowano symbol: ' wektor_symboli(x) ...
         ' Otrzymano symbol: ' wektor_symboli(wynik)];
-    
+    else
+         wiadomosc{i} = [num2str(i) ' Testowano symbol obcy ' ...
+        ' Otrzymano symbol: UZUPELNIC'];
+    end
     if(x ~= wynik)
         blad = blad + 1;
     end
