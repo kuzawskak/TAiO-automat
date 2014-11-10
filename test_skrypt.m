@@ -5,6 +5,10 @@ global liczba_stron;
 global liczba_wierszy;
 global zbior_uczacy;
 global liczba_kopii;
+global czy_niedet;
+%TODO - dodac sprawdzanie czy nie jest wiekszy niz liczba stanow, dodac
+%okienko w gui do recznego wpisania ograniczenia
+global ograniczenie_automatu_niedet;
 
 %Pobranie wartoœci z GUI
 handles = guidata(gcf);
@@ -17,8 +21,8 @@ max_wartosc = str2double(get(handles.max,'String'));
 liczba_iteracji = str2double(get(handles.iteracje,'String'));
 liczba_rojow = str2double(get(handles.roje,'String'));
 liczba_symboli_testowych = str2double(get(handles.symbole_testowe,'String'));
-
-srednia = 0;
+srednia = str2double(get(handles.srednia, 'String'));
+wariancja = str2double(get(handles.wariancja, 'String'));
 wariancja = 3;
 
 plik_wejsciowy = 'plik_wejsciowy.dat';
@@ -35,11 +39,19 @@ wszystkie_symbole = mapowanie_symboli(plik_wejsciowy, liczba_symboli);
 zbior_uczacy = stworz_zbior_uczacy(plik_wejsciowy, liczba_symboli, ...
     liczba_cech, liczba_kopii, srednia, wariancja );
 
+
+%%%%%%%%    dorzucenie elemntow obcych do zbioru uczacego (DODAMY NA KONIEC
+%%%%%%%%    MACIERZY)
+
+ograniczenie_automatu_niedet = 4;
+
 %GENERUJAMY AUTOMAT - w postaci tabeli funkcji przejscia
+czy_niedet=-1;
 automat = generuj_automat(liczba_symboli, liczba_cech);
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 a = 100;
+%mac_przejsc = permute(reshape(automat, liczba_symboli * liczba_symboli * liczba_cech, 1, 1), [2 1])
 f_handler = @funkcja_bledu;
 liczba_stron = liczba_cech;
 liczba_wierszy = liczba_symboli;
@@ -83,6 +95,10 @@ disp(sprintf('Blad calkowity obliczen dla zbioru uczacego: %f', blad))
     wszystkie_symbole);
 blad2 = blad2 / liczba_symboli_testowych;
 disp(sprintf('Blad calkowity obliczen dla zbioru testowego: %f', blad2))  
+
+%%%%%%%%%%%%%%%%%%%OBLICZENIA DLA NIEDETERMISTYCZNEGO
+czy_niedet = 0;
+automat2 = generuj_automat(liczba_symboli, liczba_cech)   
 
 %koniec mierzenia czasu
 czas = toc;

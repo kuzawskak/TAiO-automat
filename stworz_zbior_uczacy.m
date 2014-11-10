@@ -5,10 +5,11 @@ function [gotowy_zbior] = stworz_zbior_uczacy(csvfile, liczba_symboli, ...
 
 % macierz danych wejsciowych
 dane_wejsciowe = csvread(csvfile, 0, 1);
+ile_symboli_obcych = (30 * liczba_symboli * liczba_kopii) / 100
 
 %rozszerzamy macierz do zbioru uczacego - bedzie x razy wieksza, gdzie x = liczba_kopii
 %zbior_uczacy = int(liczba_kopii * liczba_symboli, liczba_cech);
-zbior_uczacy = zeros(liczba_kopii * liczba_symboli, liczba_cech);
+zbior_uczacy = zeros(liczba_kopii * liczba_symboli + ile_symboli_obcych, liczba_cech);
 
 
 for i = 0 : liczba_symboli 
@@ -19,11 +20,22 @@ end
 for i = 0 : liczba_symboli - 1 
     for powt = 2 : liczba_kopii    
         for cecha = 1 : liczba_cech
-            zbior_uczacy(i * liczba_kopii + powt,cecha) = ...
-                dane_wejsciowe(i + 1,cecha) + abs(rozklad_normalny(srednia, wariancja));
+            zbior_uczacy(i * liczba_kopii + powt, cecha) = ...
+                dane_wejsciowe(i + 1, cecha) + abs(rozklad_normalny(srednia, wariancja));
         end
     end
 end
+
+%generowanie elementow obcych przez permutacje losowych wektorow 
+tmp_wektor = randperm(size(zbior_uczacy, 1) - ile_symboli_obcych, ile_symboli_obcych);
+length(tmp_wektor)
+for i = 1 : length(tmp_wektor)
+    ind = randperm(liczba_cech)
+    for j = 1 : liczba_cech
+        zbior_uczacy(size(zbior_uczacy, 1) - ile_symboli_obcych + i, j) = zbior_uczacy(tmp_wektor(i), ind(j));
+    end
+end   
+    
 
 %normalizacja macierzy
 maxim = 0;
@@ -57,6 +69,8 @@ for wiersz = 1:n(1)
          end
     end
 end
+
+gotowy_zbior
 
 end
 
