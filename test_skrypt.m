@@ -6,15 +6,13 @@ global liczba_wierszy;
 global zbior_uczacy;
 global liczba_kopii;
 global czy_niedet;
-%TODO - dodac sprawdzanie czy nie jest wiekszy niz liczba stanow, dodac
-%okienko w gui do recznego wpisania ograniczenia
 global ograniczenie_automatu_niedet;
 
 %Pobranie wartoœci z GUI
 handles = guidata(gcf);
 
 %Przypisanie wartoœci
-ograniczenie = str2double(get(handles.ograniczenie, 'String'));
+ograniczenie_automatu_niedet = str2double(get(handles.ograniczenie, 'String'));
 max_wartosc = str2double(get(handles.max, 'String'));
 srednia = str2double(get(handles.srednia, 'String'));
 wariancja = str2double(get(handles.wariancja, 'String'));
@@ -27,7 +25,7 @@ liczba_symboli_testowych = str2double(get(handles.symbole_testowe, 'String'));
 
 plik_wejsciowy = 'plik_wejsciowy.dat';
 
-if(ograniczenie > liczba_symboli)
+if(ograniczenie_automatu_niedet > liczba_symboli)
    msgbox('Ograniczenie dla automatu niedeterministycznego nie mo¿e byæ wiêksze ni¿ liczba klas symboli.');
    return;
 end
@@ -48,8 +46,6 @@ zbior_uczacy = stworz_zbior_uczacy(plik_wejsciowy, liczba_symboli, ...
 %%%%%%%%    dorzucenie elemntow obcych do zbioru uczacego (DODAMY NA KONIEC
 %%%%%%%%    MACIERZY)
 
-ograniczenie_automatu_niedet = 4;
-
 %GENERUJAMY AUTOMAT - w postaci tabeli funkcji przejscia
 czy_niedet = -1;
 automat = generuj_automat(liczba_symboli, liczba_cech);
@@ -68,7 +64,6 @@ opcje.niter = liczba_iteracji;
 
 [xopt, fopt] = PSO(f_handler, liczba_symboli * liczba_symboli * liczba_cech, opcje);
 
-maxx = 0;
 macierz_z_pso = reshape(xopt, liczba_wierszy, liczba_wierszy, liczba_stron);
 
 for i = 1 : liczba_stron
