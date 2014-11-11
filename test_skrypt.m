@@ -14,18 +14,23 @@ global ograniczenie_automatu_niedet;
 handles = guidata(gcf);
 
 %Przypisanie wartoœci
-liczba_cech = str2double(get(handles.cechy,'String'));
-liczba_symboli = str2double(get(handles.symbole,'String'));
-liczba_kopii = str2double(get(handles.kopie,'String'));
-max_wartosc = str2double(get(handles.max,'String'));
-liczba_iteracji = str2double(get(handles.iteracje,'String'));
-liczba_rojow = str2double(get(handles.roje,'String'));
-liczba_symboli_testowych = str2double(get(handles.symbole_testowe,'String'));
+ograniczenie = str2double(get(handles.ograniczenie, 'String'));
+max_wartosc = str2double(get(handles.max, 'String'));
 srednia = str2double(get(handles.srednia, 'String'));
 wariancja = str2double(get(handles.wariancja, 'String'));
-wariancja = 3;
+liczba_kopii = str2double(get(handles.kopie, 'String'));
+liczba_cech = str2double(get(handles.cechy, 'String'));
+liczba_symboli = str2double(get(handles.symbole, 'String'));
+liczba_iteracji = str2double(get(handles.iteracje, 'String'));
+liczba_rojow = str2double(get(handles.roje, 'String'));
+liczba_symboli_testowych = str2double(get(handles.symbole_testowe, 'String'));
 
 plik_wejsciowy = 'plik_wejsciowy.dat';
+
+if(ograniczenie > liczba_symboli)
+   msgbox('Ograniczenie dla automatu niedeterministycznego nie mo¿e byæ wiêksze ni¿ liczba klas symboli.');
+   return;
+end
 
 %start mierzenia czasu
 tic
@@ -46,7 +51,7 @@ zbior_uczacy = stworz_zbior_uczacy(plik_wejsciowy, liczba_symboli, ...
 ograniczenie_automatu_niedet = 4;
 
 %GENERUJAMY AUTOMAT - w postaci tabeli funkcji przejscia
-czy_niedet=-1;
+czy_niedet = -1;
 automat = generuj_automat(liczba_symboli, liczba_cech);
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
