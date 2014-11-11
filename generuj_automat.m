@@ -11,7 +11,7 @@ if(czy_niedet == -1)
 for i = 1 : liczba_podzialow
     for j = 1 : liczba_symboli
         r = randi(liczba_symboli);
-        macierz_przejsc(r,j,i)=1;
+        macierz_przejsc(r, j, i) = 1;
     end
 end
 else
