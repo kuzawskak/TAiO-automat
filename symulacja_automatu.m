@@ -8,7 +8,7 @@ pop_stan(1) = 1;
 nast_stan = pop_stan;
 
 for k = 1 : length(wektor)
-    nast_stan = max(min(macierz_przejsc(k, :, wektor(i)), pop_stan));
+    nast_stan = max(min(macierz_przejsc(k, :, wektor(i)), pop_stan'));
     pop_stan = nast_stan;
 end
 
