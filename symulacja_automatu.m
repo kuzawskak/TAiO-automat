@@ -8,9 +8,12 @@ pop_stan(1) = 1;
 nast_stan = pop_stan;
 
 for i = 1 : length(wektor)
-    nast_stan = max(min(macierz_przejsc(i, :, wektor(i)), pop_stan'));
+    for j=1:length(nast_stan)
+        nast_stan(j)=max(min(macierz_przejsc(j, :, wektor(i)),pop_stan'));
+    end
     pop_stan = nast_stan;
 end
 
 symbol = find(nast_stan);
+
 end

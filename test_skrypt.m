@@ -32,6 +32,7 @@ end
 
 %start mierzenia czasu
 tic
+disp('Rozpoczynam prace, prosze czekac...');
 %generujemy swoj plik csv
 generuj_csv(liczba_symboli, liczba_cech, max_wartosc, plik_wejsciowy);
 
@@ -98,7 +99,7 @@ disp(sprintf('Blad calkowity obliczen dla zbioru testowego: %f', blad2))
 
 %%%%%%%%%%%%%%%%%%%OBLICZENIA DLA NIEDETERMISTYCZNEGO
 czy_niedet = 0;
-automat2 = generuj_automat(liczba_symboli, liczba_cech)   
+automat2 = generuj_automat(liczba_symboli, liczba_cech) ;  
 
 %koniec mierzenia czasu
 czas = toc;

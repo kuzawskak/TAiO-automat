@@ -1,2 +1,8 @@
 ~ symulacja obliczen dla automatu niedetermistycznego
+
 ~ dodac stany odrzucaj¹ce do obu automatow
+
+~ uzupe³niæ automaty detereministyczne o mo¿liwoœæ odrzucania
+
+~ dodaæ automaty niedetermistyczne bez odrzucania
+~ uzupe³niæ automaty niedetereministyczne o mo¿liwoœæ odrzucania

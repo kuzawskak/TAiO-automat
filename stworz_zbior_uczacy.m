@@ -5,7 +5,7 @@ function [gotowy_zbior] = stworz_zbior_uczacy(csvfile, liczba_symboli, ...
 
 % macierz danych wejsciowych
 dane_wejsciowe = csvread(csvfile, 0, 1);
-ile_symboli_obcych = (30 * liczba_symboli * liczba_kopii) / 100
+ile_symboli_obcych = (30 * liczba_symboli * liczba_kopii) / 100;
 
 %rozszerzamy macierz do zbioru uczacego - bedzie x razy wieksza, gdzie x = liczba_kopii
 %zbior_uczacy = int(liczba_kopii * liczba_symboli, liczba_cech);
@@ -28,9 +28,8 @@ end
 
 %generowanie elementow obcych przez permutacje losowych wektorow 
 tmp_wektor = randperm(size(zbior_uczacy, 1) - ile_symboli_obcych, ile_symboli_obcych);
-length(tmp_wektor)
 for i = 1 : length(tmp_wektor)
-    ind = randperm(liczba_cech)
+    ind = randperm(liczba_cech);
     for j = 1 : liczba_cech
         zbior_uczacy(size(zbior_uczacy, 1) - ile_symboli_obcych + i, j) = zbior_uczacy(tmp_wektor(i), ind(j));
     end
@@ -69,8 +68,6 @@ for wiersz = 1:n(1)
          end
     end
 end
-
-gotowy_zbior
 
 end
 
