@@ -18,8 +18,10 @@ else
   for i = 1 : liczba_podzialow
     for j = 1 : liczba_symboli
         p = randi(ograniczenie_automatu_niedet + 1) - 1;
-        r = randperm(liczba_symboli, p);
-        for k = 1 : p
+        prob = [0.3, 0.3, 0.2, 0.2];
+        x = sum(p >= cumsum([0, prob]));
+        r = randperm(liczba_symboli, x);
+        for k = 1 : x
             macierz_przejsc(r(k), j, i) = 1;
         end
     end

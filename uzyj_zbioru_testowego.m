@@ -5,28 +5,51 @@ function [blad wiadomosc] = uzyj_zbioru_testowego(ilosc_elem, macierz_przejsc, w
 global zbior_uczacy
 global liczba_kopii
 global liczba_wierszy
+global liczba_st_odrzucajacych
+
 
 blad = 0;
 wiadomosc = cell(ilosc_elem + 4, 1);
 tmp_wektor = randperm(size(zbior_uczacy, 1), ilosc_elem);
 
 for i = 1 : ilosc_elem,
-    x = znajdz_symbol(tmp_wektor(i), liczba_wierszy, liczba_kopii);
-    if(x ~= -1)
-    disp(sprintf('%d Testowano symbol: %c', i, wektor_symboli(x)))
+    x = znajdz_symbol(tmp_wektor(i), liczba_wierszy-liczba_st_odrzucajacych, liczba_kopii);
     wynik = symulacja_automatu(zbior_uczacy(tmp_wektor(i), :), macierz_przejsc);
-    disp(sprintf('Otrzymano symbol: %c', wektor_symboli(wynik)))
-    
-    wiadomosc{i} = [num2str(i) ' Testowano symbol: ' wektor_symboli(x) ...
-        ' Otrzymano symbol: ' wektor_symboli(wynik)];
+    if(x ~= -1)
+        disp(sprintf('%d Testowano symbol: %c ', i, wektor_symboli(x)));
     else
-         wiadomosc{i} = [num2str(i) ' Testowano symbol obcy ' ...
-        ' Otrzymano symbol: UZUPELNIC'];
+        disp(sprintf('%d Testowano symbol: obcy ', i));
     end
-    if(x ~= wynik)
+    if(find(wynik)<=liczba_wierszy-liczba_st_odrzucajacych)
+        if(x~=-1 && wynik(x)==1)
+            disp(sprintf('Otrzymano symbol: %c ', wektor_symboli(x)));
+        else
+            disp(sprintf('Otrzymano symbol: %c ', wektor_symboli(find(wynik))));
+        end
+    else
+        disp(sprintf('Otrzymano symbol: odrzucony '));
+    end  
+
+    
+    if(x ~= -1 && znajdz_symbol_obcy(wynik) == 1)
+        blad = blad + 1;
+    elseif(x ~= -1 && wynik(x) ~= 1)
+        blad = blad + 1;
+    elseif(x == -1 && znajdz_symbol_obcy(wynik) ~= 1)
         blad = blad + 1;
     end
+    
 end
 
-end
+%    wiadomosc{i} = [num2str(i) ' Testowano symbol: ' wektor_symboli(x) ...
+%        ' Otrzymano symbol: ' wektor_symboli(find(wynik))];        
+%         if(znajdz_symbol_obcy(wynik)==1)
+%          wiadomosc{i} = [num2str(i) ' Testowano symbol obcy ' ...
+%         ' Otrzymano symbol: obcy'];
+%         else
+%             wiadomosc{i} = [num2str(i) ' Testowano symbol obcy ' ...
+%        ' Otrzymano symbol: ' wektor_symboli(find(wynik))];
+% 
+%         end
 
+end

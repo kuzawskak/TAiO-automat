@@ -1,8 +1,2 @@
-~ symulacja obliczen dla automatu niedetermistycznego
-
-~ dodac stany odrzucaj¹ce do obu automatow
-
-~ uzupe³niæ automaty detereministyczne o mo¿liwoœæ odrzucania
-
-~ dodaæ automaty niedetermistyczne bez odrzucania
-~ uzupe³niæ automaty niedetereministyczne o mo¿liwoœæ odrzucania
+~ dorobiæ do GUI radio button, ktory ustala, czy automaty bed¹ dzia³a³y z odrzucaniem czy bez (zmienia wartosc zmiennej "czy_odrzucanie" z test_skrypt.m na -1 lub 0)
+~ dorobiæ do GUI radio button, ktory ustala, czy dzia³amy na automacie determistycznym czy niedetermistycznym (zmienia wartosc zmiennej "czy_niedet" z test_skrypt.m na -1 lub 0)

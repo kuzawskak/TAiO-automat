@@ -1,7 +1,6 @@
-function symbol = symulacja_automatu(wektor, macierz_przejsc)
+function stan_wynikowy = symulacja_automatu(wektor, macierz_przejsc)
 %SYMULACJA_AUTOMATU symulacja pracy automatu, mnozenie macierzy i
-%wypisywanie wynikowego stanu, na koniec znajdowany jest indeks jedynki w
-%wektorze, potrzebny do zmapowania symbolu
+%wypisywanie wynikowego stanu
 
 pop_stan = zeros(size(macierz_przejsc, 1), 1);
 pop_stan(1) = 1;
@@ -14,6 +13,6 @@ for i = 1 : length(wektor)
     pop_stan = nast_stan;
 end
 
-symbol = find(nast_stan);
+stan_wynikowy=nast_stan;
 
 end
