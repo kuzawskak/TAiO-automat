@@ -15,11 +15,13 @@ handles = guidata(gcf);
 
 %Przypisanie wartoœci
 
-%to trzeba zczytaæ z gui
-czy_niedet = 0;
-
-%to trzeba tez zczytaæ z gui
-czy_odrzucanie = 0;
+odrzucanie = get(handles.czy_odrzuca, 'value');
+switch odrzucanie
+    case 1 % z odrzucaniem elementów obcych
+        czy_odrzucanie = 0;
+    case 2 % bez odrzucania elementów obcych
+        czy_odrzucanie = -1;
+end
 
 if(czy_odrzucanie == 0)
     liczba_st_odrzucajacych = str2double(get(handles.odrzucajace, 'String'));
@@ -36,6 +38,14 @@ liczba_symboli = str2double(get(handles.symbole, 'String'));
 liczba_iteracji = str2double(get(handles.iteracje, 'String'));
 liczba_rojow = str2double(get(handles.roje, 'String'));
 liczba_symboli_testowych = str2double(get(handles.symbole_testowe, 'String'));
+
+rodzaj_automatu = get(handles.rodzaj_automatu, 'value');
+switch rodzaj_automatu
+    case 1 % Deterministyczny
+        czy_niedet = -1;
+    case 2 % Niedeterministyczny
+        czy_niedet = 0;
+end
 
 plik_wejsciowy = 'plik_wejsciowy.dat';
 
