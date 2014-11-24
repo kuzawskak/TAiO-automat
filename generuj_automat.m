@@ -18,7 +18,7 @@ else
   for i = 1 : liczba_podzialow
     for j = 1 : liczba_symboli
         p = randi(ograniczenie_automatu_niedet + 1) - 1;
-        prob = [0.3, 0.3, 0.2, 0.2];
+        prob = [0.2, 0.4, 0.2, 0.2];
         x = sum(p >= cumsum([0, prob]));
         r = randperm(liczba_symboli, x);
         for k = 1 : x

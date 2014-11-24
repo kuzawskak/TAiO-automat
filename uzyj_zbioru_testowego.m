@@ -6,7 +6,7 @@ global zbior_uczacy
 global liczba_kopii
 global liczba_wierszy
 global liczba_st_odrzucajacych
-
+global czy_odrzucanie
 
 blad = 0;
 wiadomosc = cell(ilosc_elem + 4, 1);
@@ -20,18 +20,24 @@ for i = 1 : ilosc_elem,
     else
         disp(sprintf('%d Testowano symbol: obcy ', i));
     end
-    if(find(wynik)<=liczba_wierszy-liczba_st_odrzucajacych)
+   % if(find(wynik)<=liczba_wierszy-liczba_st_odrzucajacych)
         if(x~=-1 && wynik(x)==1)
             disp(sprintf('Otrzymano symbol: %c ', wektor_symboli(x)));
-        else
+        elseif (czy_odrzucanie==0 && znajdz_symbol_obcy(wynik) == 1) 
+            disp(sprintf('Otrzymano symbol: odrzucony '));
+        elseif(x~=-1 && isempty(find(wynik))==1)
+            disp(sprintf('Otrzymano symbol: nieznany '));
+        elseif(x~=-1 && wynik(x)~=1)
             disp(sprintf('Otrzymano symbol: %c ', wektor_symboli(find(wynik))));
-        end
-    else
-        disp(sprintf('Otrzymano symbol: odrzucony '));
-    end  
+        elseif(x==-1)
+            disp(sprintf('Otrzymano symbol: %c ', wektor_symboli(find(wynik))));
+        end  
+        
 
     
     if(x ~= -1 && znajdz_symbol_obcy(wynik) == 1)
+        blad = blad + 1;
+    elseif(x ~= -1 && isempty(find(wynik))==1)
         blad = blad + 1;
     elseif(x ~= -1 && wynik(x) ~= 1)
         blad = blad + 1;
