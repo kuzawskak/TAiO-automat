@@ -1,4 +1,4 @@
-function [blad wiadomosc] = uzyj_zbioru_testowego(ilosc_elem, macierz_przejsc, wektor_symboli)
+function [blad, wiadomosc] = uzyj_zbioru_testowego(ilosc_elem, macierz_przejsc, wektor_symboli)
 %UZYJ_ZBIORU_TESTOWEGO funkcja uzywa zbudowanego automatu do testowania
 %symboli ze zbioru testowego(=wylosowanych wartosci ze zbioru uczacego)
 
@@ -16,28 +16,26 @@ for i = 1 : ilosc_elem,
     x = znajdz_symbol(tmp_wektor(i), liczba_wierszy-liczba_st_odrzucajacych, liczba_kopii);
     wynik = symulacja_automatu(zbior_uczacy(tmp_wektor(i), :), macierz_przejsc);
     if(x ~= -1)
-        disp(sprintf('%d Testowano symbol: %c ', i, wektor_symboli(x)));
+        fprintf(sprintf('%d Testowano symbol: %c ', i, wektor_symboli(x)));
     else
-        disp(sprintf('%d Testowano symbol: obcy ', i));
+        fprintf(sprintf('%d Testowano symbol: obcy ', i));
     end
-   % if(find(wynik)<=liczba_wierszy-liczba_st_odrzucajacych)
-        if(x~=-1 && wynik(x)==1)
-            disp(sprintf('Otrzymano symbol: %c ', wektor_symboli(x)));
-        elseif (czy_odrzucanie==0 && znajdz_symbol_obcy(wynik) == 1) 
-            disp(sprintf('Otrzymano symbol: odrzucony '));
-        elseif(x~=-1 && isempty(find(wynik))==1)
-            disp(sprintf('Otrzymano symbol: nieznany '));
-        elseif(x~=-1 && wynik(x)~=1)
-            disp(sprintf('Otrzymano symbol: %c ', wektor_symboli(find(wynik))));
-        elseif(x==-1)
-            disp(sprintf('Otrzymano symbol: %c ', wektor_symboli(find(wynik))));
-        end  
-        
-
+    
+    if(x ~= -1 && wynik(x) == 1)
+        fprintf(sprintf('Otrzymano symbol: %c ', wektor_symboli(x)));
+    elseif (czy_odrzucanie == 0 && znajdz_symbol_obcy(wynik) == 1) 
+        fprintf(sprintf('Otrzymano symbol: odrzucony '));
+    elseif(x ~= -1 && isempty(find(wynik)) == 1)
+        fprintf(sprintf('Otrzymano symbol: nieznany '));
+    elseif(x ~= -1 && wynik(x) ~= 1)
+        fprintf(sprintf('Otrzymano symbol: %c ', wektor_symboli(find(wynik))));
+    elseif(x == -1)
+        fprintf(sprintf('Otrzymano symbol: %c ', wektor_symboli(find(wynik))));
+    end  
     
     if(x ~= -1 && znajdz_symbol_obcy(wynik) == 1)
         blad = blad + 1;
-    elseif(x ~= -1 && isempty(find(wynik))==1)
+    elseif(x ~= -1 && isempty(find(wynik)) == 1)
         blad = blad + 1;
     elseif(x ~= -1 && wynik(x) ~= 1)
         blad = blad + 1;

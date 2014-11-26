@@ -2,19 +2,19 @@ function macierz_przejsc = generuj_automat(liczba_symboli, liczba_podzialow)
 
 % GENERUJ_AUTOMAT - losowanie funkcji przejscia automatow determistycznego
 % i niedetermistycznego
-global czy_niedet;
+global rodzaj_automatu;
 global ograniczenie_automatu_niedet;
 
 macierz_przejsc = zeros(liczba_symboli, liczba_symboli, liczba_podzialow);
 
-if(czy_niedet == -1)
+if(rodzaj_automatu == 1) % Deterministyczny
 for i = 1 : liczba_podzialow
     for j = 1 : liczba_symboli
         r = randi(liczba_symboli);
         macierz_przejsc(r, j, i) = 1;
     end
 end
-else
+elseif(rodzaj_automatu == 2) % Niedeterministyczny
   for i = 1 : liczba_podzialow
     for j = 1 : liczba_symboli
         p = randi(ograniczenie_automatu_niedet + 1) - 1;
@@ -26,6 +26,8 @@ else
         end
     end
   end  
+elseif(rodzaj_automatu == 3) % Rozmyty
+    macierz_przejsc = rand(liczba_symboli, liczba_symboli, liczba_podzialow);
 end
 
 end
