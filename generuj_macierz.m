@@ -1,4 +1,4 @@
-function [macierz] = generuj_macierz()
+function [macierz] = generuj_macierz(macierz)
 % Generuje macierz o podanych wymiarach x, y, liczba_stron w zale¿noœci
 % od rodzaju automatu
 
@@ -6,8 +6,6 @@ global rodzaj_automatu;
 global liczba_stron;
 global liczba_wierszy;
 global ograniczenie_automatu_niedet;
-
-macierz = zeros(liczba_wierszy, liczba_wierszy, liczba_stron);
 
 if(rodzaj_automatu == 1) % Deterministyczny
   for i = 1 : liczba_stron

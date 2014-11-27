@@ -81,8 +81,8 @@ opcje.niter = liczba_iteracji;
 
 [xopt, ~] = PSO(f_handler, liczba_wierszy * liczba_wierszy * liczba_cech, opcje);
 
-reshape(xopt, liczba_wierszy, liczba_wierszy, liczba_stron);
-macierz_z_pso = generuj_macierz();
+macierz_z_pso = reshape(xopt, liczba_wierszy, liczba_wierszy, liczba_stron);
+macierz_z_pso = generuj_macierz(macierz_z_pso);
  
 c_blad = 0;
 for i = 1 : size(zbior_uczacy, 1)

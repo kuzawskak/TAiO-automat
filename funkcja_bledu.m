@@ -12,8 +12,8 @@ global liczba_st_odrzucajacych;
 blad = 0;
   
 %zamien wektor na macierz 3-wymiarowa
-reshape(wektor_z_macierzy3d, liczba_wierszy, liczba_wierszy, liczba_stron);  
-macierz = generuj_macierz();
+macierz = reshape(wektor_z_macierzy3d, liczba_wierszy, liczba_wierszy, liczba_stron);  
+macierz = generuj_macierz(macierz);
   
 %iterujemy po wszystkich wektorach ze zbioru uczacego
 for i = 1 : size(zbior_uczacy, 1)
