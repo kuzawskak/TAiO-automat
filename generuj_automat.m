@@ -27,7 +27,7 @@ elseif(rodzaj_automatu == 2) % Niedeterministyczny
     end
   end  
 elseif(rodzaj_automatu == 3) % Rozmyty
-    macierz_przejsc = rand(liczba_symboli, liczba_symboli, liczba_podzialow);
+    macierz_przejsc = rand(liczba_symboli, liczba_symboli, liczba_podzialow)
 end
 
 end
