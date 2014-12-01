@@ -70,7 +70,16 @@ generuj_automat(liczba_symboli + liczba_st_odrzucajacych, liczba_cech);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 a = 100;
 %mac_przejsc = permute(reshape(automat, liczba_symboli * liczba_symboli * liczba_cech, 1, 1), [2 1])
-f_handler = @funkcja_bledu;
+if(rodzaj_automatu==3)%rozmyty    
+f_handler = @funkcja_bledu_rozmyty;
+f_sym_automat = @symulacja_automatu_rozmytego;
+else
+  f_handler = @funkcja_bledu;
+  f_sym_automat = @symulacja_automatu;
+end
+
+
+
 liczba_stron = liczba_cech;
 liczba_wierszy = liczba_symboli + liczba_st_odrzucajacych;
 
@@ -86,14 +95,14 @@ macierz_z_pso = generuj_macierz(macierz_z_pso);
  
 c_blad = 0;
 for i = 1 : size(zbior_uczacy, 1)
-    wynik = symulacja_automatu(zbior_uczacy(i, :), macierz_z_pso);
-    wynik2 = znajdz_symbol(i, liczba_wierszy - liczba_st_odrzucajacych, liczba_kopii);
+    wynik = f_sym_automat(zbior_uczacy(i, :), macierz_z_pso)
+    wynik2 = znajdz_symbol(i, liczba_wierszy - liczba_st_odrzucajacych, liczba_kopii)
     
     %sprawdzamy czy wynik automatu jest prawidlowy, poprzez sprawdzenie czy 
     %na x-tym miejscu w wektorze "wynik" znajduje siê 1 i jesli nie, to zwiekszamy blad 
     if (wynik2 ~= -1 && znajdz_symbol_obcy(wynik) == 1)
         c_blad = c_blad + 1;
-    elseif(wynik2 ~= -1 && wynik(wynik2) ~= 1)
+    elseif(wynik2 ~= -1 && wynik(wynik2) ~= max(wynik))  % TUTAJ stosuje juz ³atwiejsza funkcje bledu
         c_blad = c_blad + 1;
     elseif (wynik2 == -1 && znajdz_symbol_obcy(wynik) ~= 1)
         c_blad = c_blad + 1;  
