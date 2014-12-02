@@ -7,6 +7,7 @@ global liczba_kopii
 global liczba_wierszy
 global liczba_st_odrzucajacych
 global czy_odrzucanie
+global rodzaj_automatu;
 
 blad = 0;
 wiadomosc = cell(ilosc_elem + 4, 1);
@@ -14,7 +15,10 @@ tmp_wektor = randperm(size(zbior_uczacy, 1), ilosc_elem);
 
 for i = 1 : ilosc_elem,
     x = znajdz_symbol(tmp_wektor(i), liczba_wierszy-liczba_st_odrzucajacych, liczba_kopii);
-    wynik = symulacja_automatu(zbior_uczacy(tmp_wektor(i), :), macierz_przejsc);
+    if(rodzaj_automatu==3)
+    wynik = symulacja_automatu_rozmytego(zbior_uczacy(tmp_wektor(i), :), macierz_przejsc);
+    else wynik=symulacja_automatu(zbior_uczacy(tmp_wektor(i), :), macierz_przejsc);
+    end
     if(x ~= -1)
         fprintf(sprintf('%d Testowano symbol: %c ', i, wektor_symboli(x)));
     else

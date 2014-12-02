@@ -9,6 +9,7 @@ global rodzaj_automatu;
 global ograniczenie_automatu_niedet;
 global liczba_st_odrzucajacych;
 global czy_odrzucanie;
+global liczba_cech;
 
 %Pobranie wartoœci z GUI
 handles = guidata(gcf);
@@ -61,8 +62,13 @@ generuj_csv(liczba_symboli, liczba_cech, max_wartosc, plik_wejsciowy);
 wszystkie_symbole = mapowanie_symboli(plik_wejsciowy, liczba_symboli);
 
 %przygotowanie gotowego zbior uczacego do uzycia w automacie
-zbior_uczacy = stworz_zbior_uczacy(plik_wejsciowy, liczba_symboli, ...
+if(rodzaj_automatu==3)%rozmyty  
+zbior_uczacy = stworz_rozmyty_zbior_uczacy(plik_wejsciowy, liczba_symboli, ...
     liczba_cech, liczba_kopii, srednia, wariancja );
+else
+   zbior_uczacy = stworz_zbior_uczacy(plik_wejsciowy, liczba_symboli, ...
+    liczba_cech, liczba_kopii, srednia, wariancja );
+end
 
 %GENERUJAMY AUTOMAT - w postaci tabeli funkcji przejscia
 
@@ -115,6 +121,8 @@ fprintf(sprintf('Blad calkowity obliczen dla zbioru uczacego: %f', blad));
 
 [blad2, wiadomosc] = uzyj_zbioru_testowego(liczba_symboli_testowych, macierz_z_pso, ...
     wszystkie_symbole);
+
+
 blad2 = blad2 / liczba_symboli_testowych;
 fprintf(sprintf('Blad calkowity obliczen dla zbioru testowego: %f', blad2));
 
