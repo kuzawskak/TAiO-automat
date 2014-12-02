@@ -101,8 +101,8 @@ macierz_z_pso = generuj_macierz(macierz_z_pso);
  
 c_blad = 0;
 for i = 1 : size(zbior_uczacy, 1)
-    wynik = f_sym_automat(zbior_uczacy(i, :), macierz_z_pso)
-    wynik2 = znajdz_symbol(i, liczba_wierszy - liczba_st_odrzucajacych, liczba_kopii)
+    wynik = f_sym_automat(zbior_uczacy(i, :), macierz_z_pso);
+    wynik2 = znajdz_symbol(i, liczba_wierszy - liczba_st_odrzucajacych, liczba_kopii);
     
     %sprawdzamy czy wynik automatu jest prawidlowy, poprzez sprawdzenie czy 
     %na x-tym miejscu w wektorze "wynik" znajduje siê 1 i jesli nie, to zwiekszamy blad 

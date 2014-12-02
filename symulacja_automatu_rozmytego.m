@@ -18,7 +18,9 @@ for i=1: size(stopien_przynaleznosci_do_strony,2)
     stopien_przynaleznosci_do_strony(:,i) = wektor(i);
 end   
 
-wektor_minimum=zeros(length(pop_stan));
+
+
+
 %% na razie zakladam ze nadal dzielimyzbior testowy na podprzedzialy
 %% i ma on postac liczb calkowitych 
 for i = 1 : (length(wektor)/liczba_cech)
@@ -27,33 +29,32 @@ for i = 1 : (length(wektor)/liczba_cech)
     %mnozenie (max-min) macierzy przejsc *  stan
     for j = 1 :length(nast_stan)        
        for k = 1: length(nast_stan)
-        minimum(k) = 1- tanh(atanh(1-macierz_przejsc(j, k,strona))+atanh(1-pop_stan(k)));  
+        z_minimum(k) = minimum(macierz_przejsc(j, k,strona),pop_stan(k));
        end
-       % 
-       for m = 1: length(minimum)
-        wektor_minimum(1,m)=atanh(minimum(1,m));
+       
+       max(j)=maximum(z_minimum(1,1),z_minimum(1,2));
+       for loop=3: size(z_minimum,2)       
+            max(j)=maximum(z_minimum(1,loop),max(j)) ;          
        end
-        suma_min=sum(wektor_minimum(1,:));
-        max(j) = tanh(suma_min); 
+                  
         %otzrymuje konf koncowa dla strony s
         nast_stan(j)=max(j);
     end 
    
-    konfiguracja_koncowa_stron(:,strona)=nast_stan';
-    
-    konfiguracje_ze_st_przynaleznosci(:,strona)=1-tanh(atanh(1-stopien_przynaleznosci_do_strony(:,strona))+...
-        atanh(1-konfiguracja_koncowa_stron(:,strona)));
+    konfiguracja_koncowa_stron(:,strona)=nast_stan';    
+    konfiguracje_ze_st_przynaleznosci(:,strona)=...
+    minimum(stopien_przynaleznosci_do_strony(:,strona),konfiguracja_koncowa_stron(:,strona));
+
  end
 %agrguje wyniki ze wszytkich stron zeby uzyskac nast_stan
-
-a=atanh(konfiguracje_ze_st_przynaleznosci);
-suma_stopni = sum(a,2);
-nast_stan=tanh(suma_stopni);
-
+maxss=maximum(konfiguracje_ze_st_przynaleznosci(:,1),konfiguracje_ze_st_przynaleznosci(:,2));
+        for loop=3: size(konfiguracje_ze_st_przynaleznosci,2)      
+            maxss=maximum(konfiguracje_ze_st_przynaleznosci(:,loop),maxss) ;
+        end           
+        %otzrymuje konf koncowa dla wszytkich stron
+nast_stan=maxss;
 pop_stan = nast_stan;
 end
-
-
 stan_wynikowy = nast_stan;
 end
 

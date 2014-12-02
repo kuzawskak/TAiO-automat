@@ -58,8 +58,8 @@ end
 %
 n = size(zbior_uczacy);
 gotowy_zbior = ones(n(1),n(2)*liczba_cech);
-ulamek = 1/liczba_cech
-srodek = ulamek/2
+ulamek = 1/liczba_cech;
+srodek = ulamek/2;
 
 %tworzymy inna funkcje gaussowska dla kazdego przedzialu, wybierajac jako
 %argument x0 srodek tego przedzialu

@@ -34,7 +34,8 @@ for i = 1 : ilosc_elem,
     elseif(x ~= -1 && wynik(x) ~= 1)
         fprintf(sprintf('Otrzymano symbol: %c ', wektor_symboli(find(wynik))));
     elseif(x == -1)
-        fprintf(sprintf('Otrzymano symbol: %c ', wektor_symboli(find(wynik))));
+        a= find(wynik)
+        fprintf(sprintf('Otrzymano symbol: %c ', wektor_symboli(a)));
     end  
     
     if(x ~= -1 && znajdz_symbol_obcy(wynik) == 1)
