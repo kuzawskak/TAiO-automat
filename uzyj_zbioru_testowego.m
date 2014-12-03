@@ -29,18 +29,25 @@ for i = 1 : ilosc_elem,
         fprintf(sprintf('Otrzymano symbol: %c ', wektor_symboli(x)));
     elseif (czy_odrzucanie == 0 && znajdz_symbol_obcy(wynik) == 1) 
         fprintf(sprintf('Otrzymano symbol: odrzucony '));
-    elseif(x ~= -1 && isempty(find(wynik)) == 1)
+    elseif(x ~= -1 && isempty(find(wynik, 1)) == 1)
         fprintf(sprintf('Otrzymano symbol: nieznany '));
     elseif(x ~= -1 && wynik(x) ~= 1)
-        fprintf(sprintf('Otrzymano symbol: %c ', wektor_symboli(find(wynik))));
+        otrzymane_symbole = find(wynik, length(wektor_symboli));
+        fprintf('Otrzymano symbol: ');
+        for j = 1 : length(otrzymane_symbole)
+            fprintf(sprintf('%c ', wektor_symboli(j)));
+        end
     elseif(x == -1)
-        a= find(wynik)
-        fprintf(sprintf('Otrzymano symbol: %c ', wektor_symboli(a)));
+        otrzymane_symbole = find(wynik, length(wektor_symboli));
+        fprintf('Otrzymano symbol: ');
+        for j = 1 : length(otrzymane_symbole)
+            fprintf(sprintf('%c ', wektor_symboli(j)));
+        end
     end  
     
     if(x ~= -1 && znajdz_symbol_obcy(wynik) == 1)
         blad = blad + 1;
-    elseif(x ~= -1 && isempty(find(wynik)) == 1)
+    elseif(x ~= -1 && isempty(find(wynik, 1)) == 1)
         blad = blad + 1;
     elseif(x ~= -1 && wynik(x) ~= 1)
         blad = blad + 1;
