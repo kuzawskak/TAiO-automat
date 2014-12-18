@@ -1,11 +1,11 @@
-function [] = generuj_csv(l_symboli, l_cech, max_wartosc, plik_wejsciowy)
+function [] = generuj_csv(l_symboli, l_cech, min_wartosc, max_wartosc, plik_wejsciowy)
 
 % GENERUJ_CSV - generowanie pliku csv z lsoowymi wartosciami cech
 % zakladamy ze mamy litery a, b , c, d ... w zaleznosci od l_sym
 % max_wartosc - wartosc maksymalna dla wartosci cechy
 % cechy beda losowane z przedzialu od 0 do max_wartosc
 
-A = rand(l_symboli, l_cech + 1) * (max_wartosc + 1);
+A = min_wartosc + rand(l_symboli, l_cech + 1) * (max_wartosc -min_wartosc);
 A = uint16(A);
 
 for i = 1 : l_symboli

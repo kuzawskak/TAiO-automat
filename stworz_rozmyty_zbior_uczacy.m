@@ -1,5 +1,5 @@
 function [gotowy_zbior] = stworz_rozmyty_zbior_uczacy(csvfile, liczba_symboli, ...
-    liczba_cech, liczba_kopii,srednia, wariancja)
+    liczba_cech, liczba_kopii,dyskretyzacja,srednia, wariancja)
 %STWORZ_ZBIOR_UCZACY - zczytujemy dane do zbioru ucz¹cego, zwiêkszamy
 %ich iloœæ przez rozk³ad i normalizujemy, dzielimy na przedzialy
 
@@ -57,15 +57,15 @@ end
 % w ten sposob ze tworzymy wektory dlugosci n*stara_dlugosc
 %
 n = size(zbior_uczacy);
-gotowy_zbior = ones(n(1),n(2)*liczba_cech);
-ulamek = 1/liczba_cech;
+gotowy_zbior = ones(n(1),n(2)*dyskretyzacja);
+ulamek = 1/dyskretyzacja;
 srodek = ulamek/2;
 
 %tworzymy inna funkcje gaussowska dla kazdego przedzialu, wybierajac jako
 %argument x0 srodek tego przedzialu
 for wiersz = 1:n(1)
     for kolumna = 1 : n(2)
-        for iter = 1 : liczba_cech
+        for iter = 1 : dyskretyzacja
            % if(zbior_uczacy(wiersz, kolumna) < iter * ulamek ...
            %         && zbior_uczacy(wiersz, kolumna) >= (iter - 1) * ulamek)
             x0= (iter-1) * ulamek + srodek;
