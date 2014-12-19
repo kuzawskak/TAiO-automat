@@ -20,7 +20,9 @@ for i = 1 : size(zbior_uczacy, 1)
     wynik = symulacja_automatu(zbior_uczacy(i, :), macierz);
     %sprawdzamy czy wynik automatu jest prawidlowy, poprzez sprawdzenie czy 
     %na x-tym miejscu w wektorze "wynik" znajduje siê 1 i jesli nie, to zwiekszamy blad 
-    if (x ~= -1 && znajdz_symbol_obcy(wynik) == 1)
+     if(x ~= -1 && wynik(x) == 1)
+         continue;
+    elseif (x ~= -1 && znajdz_symbol_obcy(wynik) == 1)
         blad = blad + 2;
     elseif(x ~= -1 && wynik(x) ~= 1)
         blad = blad + 1;
