@@ -1,6 +1,11 @@
 function [macierz] = generuj_macierz(macierz)
-% Generuje macierz o podanych wymiarach x, y, liczba_stron w zale¿noœci
-% od rodzaju automatu
+% GENERUJ_MACIERZ modyfikuje macierz zwracana przez funkcje PSO w sposob zalezny 
+% od automatu, dla determistycznego wybiera maksymalna wartosc w kolumnie
+% i w jej miejsce wstawia 1, natomiast reszta wartosci w danej kolumnie to 0;
+% dla niedetermistycznego wybiera maksymalnie k najwiekszych wartosci w kolumnie
+%(k to podane przy wywolaniu ograniczenie automatu % niedetermistycznego) 
+% i w ich miejsce wstawia 1, reszta to 0; dla automatu iedetermistycznego;
+% dla rozmytego nie ma dyskretyzacji, elementy macierzy sa losowe
 
 global rodzaj_automatu;
 global dyskretyzacja;

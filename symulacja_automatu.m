@@ -1,6 +1,12 @@
 function stan_wynikowy = symulacja_automatu(wektor, macierz_przejsc)
-%SYMULACJA_AUTOMATU symulacja pracy automatu, mnozenie macierzy i
-%wypisywanie wynikowego stanu
+%SYMULACJA_AUTOMATU symulacja pracy automatu determistycznego lub 
+% niedetermistycznego polegaj¹ca na mnozeniu macierzy (funkcji przejscia 
+% dla odpowiedniego symbolu) i koljnych stanów automatu
+
+%Dla pierwszego mnozenie aktualny stan bedzie losowym stanem ze wszystkich
+%stanow pierwotnej konfiguracji automatu
+
+%Funkcja zwraca wynikowy stan, w jakim znajduje siê automat po zakonczeniu obliczen. 
 
 global rodzaj_automatu;
 
