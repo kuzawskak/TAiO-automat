@@ -143,7 +143,7 @@ else
                     rozmiar_zb_testowy=cell2mat(varargin(i+1));
                 end
             case{'procRozmObce'}
-                if(czy_odrzucanie==0)
+                if(czy_odrzucanie==0 && typ_wejscia==-1)
                     ile_procent_symboli_obcych=cell2mat(varargin(i+1));
                 end
             case{'procRozmZaburz'}

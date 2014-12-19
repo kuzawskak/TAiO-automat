@@ -3,12 +3,13 @@ function [gotowy_zbior] = stworz_rozmyty_zbior_uczacy(csvfile, liczba_symboli, .
 %STWORZ_ZBIOR_UCZACY - zczytujemy dane do zbioru ucz¹cego, zwiêkszamy
 %ich iloœæ przez rozk³ad i normalizujemy, dzielimy na przedzialy
 
+global sciezka_obce_zbior_uczacy;
+global ile_procent_symboli_obcych
 % macierz danych wejsciowych
 dane_wejsciowe = csvread(csvfile, 0, 1);
-ile_symboli_obcych = (30 * liczba_symboli * liczba_kopii) / 100;
+ile_symboli_obcych=(ile_procent_symboli_obcych*liczba_symboli * liczba_kopii) / 100;
 
 %rozszerzamy macierz do zbioru uczacego - bedzie x razy wieksza, gdzie x = liczba_kopii
-%zbior_uczacy = int(liczba_kopii * liczba_symboli, liczba_cech);
 zbior_uczacy = zeros(liczba_kopii * liczba_symboli + ile_symboli_obcych, liczba_cech);
 
 
@@ -55,7 +56,6 @@ end
 
 % podzial na podprzedzialy A1,...,An modyfikujemy
 % w ten sposob ze tworzymy wektory dlugosci n*stara_dlugosc
-%
 n = size(zbior_uczacy);
 gotowy_zbior = ones(n(1),n(2)*dyskretyzacja);
 ulamek = 1/dyskretyzacja;

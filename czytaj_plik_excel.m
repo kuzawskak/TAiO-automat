@@ -1,8 +1,7 @@
 function [zbior_uczacy, liczba_kopii, wszystkie_symbole] =  czytaj_plik_excel(sciezka_plik)
 %CZYTAJ_PLIK_EXCEL Funkcja parsuje plik excela
 
-
-[zbior_uczacy,str]=xlsread(sciezka_plik);
+[zbior_uczacy,str]=xlsread(sciezka_plik{1});
 
 %pierwsza kolumna
 str=char(str);

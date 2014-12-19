@@ -10,9 +10,8 @@ global zbior_uczacy;
 global liczba_kopii;
 global liczba_st_odrzucajacych;
 blad = 0;
-liczba_stron=dyskretyzacja; 
 %zamien wektor na macierz 3-wymiarowa
-macierz = reshape(wektor_z_macierzy3d, liczba_wierszy, liczba_wierszy, liczba_stron);  
+macierz = reshape(wektor_z_macierzy3d, liczba_wierszy, liczba_wierszy, dyskretyzacja);  
 macierz = generuj_macierz(macierz);
   
 %iterujemy po wszystkich wektorach ze zbioru uczacego

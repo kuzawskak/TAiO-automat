@@ -4,17 +4,15 @@ function [gotowy_zbior] = stworz_zbior_uczacy(csvfile, liczba_symboli, ...
 %ich iloœæ przez rozk³ad i normalizujemy, dzielimy na przedzialy
 
 global sciezka_obce_zbior_uczacy;
-global ile_procent_symboli_obcych
-%ile_symboli_obcych2 = (30 * liczba_symboli * liczba_kopii) / 100;
+global ile_procent_symboli_obcych;
 ile_symboli_obcych=(ile_procent_symboli_obcych*liczba_symboli * liczba_kopii) / 100;
 
 if(czy_plik == 0)
-    % macierz danych wejsciowych
+    %csvfile to macierz danych wejsciowych z pliku excela
     zbior_uczacy=csvfile;
 else
     dane_wejsciowe = csvread(csvfile, 0, 1);
     %rozszerzamy macierz do zbioru uczacego - bedzie x razy wieksza, gdzie x = liczba_kopii
-    %zbior_uczacy = int(liczba_kopii * liczba_symboli, liczba_cech);
     zbior_uczacy = zeros(liczba_kopii * liczba_symboli + ile_symboli_obcych, liczba_cech);
     
     for i = 0 : liczba_symboli
@@ -79,9 +77,6 @@ for wiersz = 1:n(1)
         end
     end
 end
-
-
-gotowy_zbior
 
 end
 

@@ -14,7 +14,6 @@ global wariancja;
 global zbior_uczacy;
 global liczba_kopii;
 global rodzaj_automatu;
-global ograniczenie_automatu_niedet;
 global liczba_st_odrzucajacych;
 global liczba_cech;
 global typ_wejscia;
@@ -92,21 +91,17 @@ end
 
 
 blad = c_blad / size(zbior_uczacy, 1);
-fprintf(sprintf('Blad calkowity obliczen dla zbioru uczacego: %f', blad));
-
-
-
+disp(sprintf('Blad calkowity obliczen dla zbioru uczacego: %f', blad));
 [blad2,wektor_wynikowy]=uzyj_zbioru_testowego(liczba_symboli_testowych, macierz_z_pso, wszystkie_symbole);
 
 if(sciezka_plik_wynikowy ~= '_')
     xlswrite(sciezka_plik_wynikowy,wektor_wynikowy);
 end
 blad2 = blad2 / liczba_symboli_testowych;
-fprintf(sprintf('Blad calkowity obliczen dla zbioru testowego: %f', blad2));
+disp(sprintf('Blad calkowity obliczen dla zbioru testowego: %f', blad2));
 
 
 %koniec mierzenia czasu
-disp('Ca³kowity czas obliczeñ:');
 czas = toc
 if(sciezka_plik_dodatkowy ~= '_')
     bledy = {blad, 'Blad na zb.train'; blad2, 'Blad na zb.test' ;czas, 'Calkowity czas'};
