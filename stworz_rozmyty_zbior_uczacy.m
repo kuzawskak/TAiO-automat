@@ -1,9 +1,8 @@
 function [gotowy_zbior] = stworz_rozmyty_zbior_uczacy(csvfile, liczba_symboli, ...
-    liczba_cech, liczba_kopii,dyskretyzacja,srednia, wariancja)
+    liczba_cech, liczba_kopii,dyskretyzacja,srednia, wariancja,czy_plik)
 %STWORZ_ZBIOR_UCZACY - zczytujemy dane do zbioru ucz¹cego, zwiêkszamy
 %ich iloœæ przez rozk³ad i normalizujemy, dzielimy na przedzialy
 
-global sciezka_obce_zbior_uczacy;
 global ile_procent_symboli_obcych
 % macierz danych wejsciowych
 dane_wejsciowe = csvread(csvfile, 0, 1);

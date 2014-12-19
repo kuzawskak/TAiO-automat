@@ -1,7 +1,11 @@
 function stan_wynikowy = symulacja_automatu_rozmytego(wektor, macierz_przejsc)
 %SYMULACJA_AUTOMATU symulacja pracy automatu, mnozenie macierzy i
 %wypisywanie wynikowego stanu
-global liczba_cech;
+
+
+global dyskretyzacja;
+
+liczba_cech=dyskretyzacja
 
 % wektor - to wektor ze zbioru uczacego w postaci np [0.3  0.7  0.5  ... ]
 % w przeciwienstwie do poprzedniego etapu nie ma scisle okreslonej
@@ -58,3 +62,11 @@ end
 stan_wynikowy = nast_stan;
 end
 
+
+function max=maximum(a,b)
+max=tanh(atanh(a)+atanh(b));
+end
+
+function min=minimum(a,b)
+min=1-(tanh(atanh(1-a)+atanh(1-b)));
+end

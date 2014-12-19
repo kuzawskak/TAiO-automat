@@ -7,7 +7,6 @@ function blad = funkcja_bledu_rozmyty(wektor_z_macierzy3d)
 global liczba_stron;
 global liczba_wierszy;
 global zbior_uczacy;
-global liczba_cech;
 global liczba_kopii;
 global liczba_st_odrzucajacych;
 blad = 0;

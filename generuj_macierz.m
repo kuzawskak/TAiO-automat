@@ -27,7 +27,7 @@ if(rodzaj_automatu == 1) % Deterministyczny
 elseif(rodzaj_automatu == 2) % Niedeterministyczny
   for i = 1 : liczba_stron
       for j = 1 : liczba_wierszy
-          p = randi(ograniczenie + 1) - 1;
+          p = randi(ograniczenie + 1);
           [~, sortingIndices] = sort(macierz(:, j, i), 'descend');
           sortingIndices = sortingIndices(1 : p);
           for k = 1 : liczba_wierszy

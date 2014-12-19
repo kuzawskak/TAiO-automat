@@ -21,7 +21,7 @@ global a;
 global liczba_wierszy;
 %Przypisanie wartoœci
 plik_wejsciowy = 'plik_wejsciowy.dat';
-liczba_symboli_testowych=(rozmiar_zb_testowy*size(zbior_uczacy, 1))/100;
+liczba_symboli_testowych=(rozmiar_zb_testowy*size(zbior_uczacy, 1))/100
 srednia=0;
 
 %start mierzenia czasu
