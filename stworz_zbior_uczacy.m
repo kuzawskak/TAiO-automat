@@ -1,7 +1,10 @@
 function [gotowy_zbior] = stworz_zbior_uczacy(csvfile, liczba_symboli, ...
     liczba_cech, liczba_kopii,dyskretyzacja,srednia, wariancja,czy_plik)
-%STWORZ_ZBIOR_UCZACY - zczytujemy dane do zbioru ucz¹cego, zwiêkszamy
-%ich iloœæ przez rozk³ad i normalizujemy, dzielimy na przedzialy
+%STWORZ_ZBIOR_UCZACY generuje dane do zbioru ucz¹cego, zwiêksza
+%ich liczbe przez rozk³ad normalny, normalizuje i dzieli na przedzialy
+
+%Funkcja zwraca gotowy zbior uczacy, w zaleznosci od funkcji, zawieraj¹cy
+%elementy obce lub nie
 
 global sciezka_obce_zbior_uczacy;
 global ile_procent_symboli_obcych;

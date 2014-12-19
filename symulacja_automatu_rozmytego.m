@@ -1,13 +1,15 @@
 function stan_wynikowy = symulacja_automatu_rozmytego(wektor, macierz_przejsc)
-%SYMULACJA_AUTOMATU symulacja pracy automatu, mnozenie macierzy i
-%wypisywanie wynikowego stanu
-global liczba_cech;
 
-% wektor - to wektor ze zbioru uczacego w postaci np [0.3  0.7  0.5  ... ]
+%SYMULACJA_AUTOMATU symuluje pracê automatu, wykonuje mnozenie macierzy i
+%wypisuje wynikowy stan automatu
+% "wektor" to wektor ze zbioru uczacego w postaci np [0.3  0.7  0.5  ... ]
 % w przeciwienstwie do poprzedniego etapu nie ma scisle okreslonej
-% przynaleznosci do klasy dlatego takie wartosci
-%%pierwszy stan bedzie wektorem o wartosciach
+% przynaleznosci do klasy, dlatego takie wartosci
+
+%Dla pierwszego mnozenie aktualny stan bedzie wektorem o wartosciach
 %losowych z przedzialu od 0 do 1 (jest to wektor stopni pewnosci)
+
+%Funkcja zwraca wynikowy stan, w jakim znajduje siê automat po zakonczeniu obliczen. 
 pop_stan = rand(size(macierz_przejsc, 1), 1);
 nast_stan = pop_stan;
 
@@ -58,3 +60,10 @@ end
 stan_wynikowy = nast_stan;
 end
 
+function min=minimum(a,b)
+min=1-(tanh(atanh(1-a)+atanh(1-b)));
+end
+
+function max=maximum(a,b)
+max=tanh(atanh(a)+atanh(b));
+end

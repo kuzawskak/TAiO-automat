@@ -1,4 +1,5 @@
 function [x, fval, exitflag, output] = pso(objfunc, nvars, options)
+% FUNKCJA POBRANA Z INTERNETU
 % PSO   Particle Swarm Optimization Algorithm
 %
 % PSO attempts to solve continuous optimization problem of the form

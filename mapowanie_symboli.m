@@ -1,8 +1,8 @@
 function [symbole] = mapowanie_symboli(csvfile, liczba_symboli)
-%MAPOWANIE_SYMBOLI 
-% mapowanie symboli to wektor gdzie indeksom od 0 do liczba_symboli
-% odpowiadaja char-y z tablicy wejsciowej - wykorzystamy na koniec
-% dzialania programu - gdy bedziemy odczytywac wynik dla elemntu testowego
+%MAPOWANIE_SYMBOLI generuje wektor gdzie indeksom od 0 do liczba_symboli
+% odpowiadaja symbole z tablicy wejsciowej - wykorzystamy na koniec
+% dzialania programu - gdy bedziemy odczytywac wynik dla elementow
+% testowych
 
 symbole = char(1, liczba_symboli);
 fid = fopen(csvfile);

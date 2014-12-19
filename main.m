@@ -1,5 +1,6 @@
 function[] = main()
-
+%MAIN zarzadza dzialaniem calego programu, uzywa zmiennych wpisanych w
+%wywolaniu TAIO2014
 global sciezka_plik_wynikowy;
 global sciezka_zbior_uczacy;
 global sciezka_plik_dodatkowy;

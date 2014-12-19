@@ -1,7 +1,6 @@
 function [] = generuj_csv(l_symboli, l_cech, min_wartosc, max_wartosc, plik_wejsciowy)
-
-% GENERUJ_CSV - generowanie pliku csv z lsoowymi wartosciami cech
-% zakladamy ze mamy litery a, b , c, d ... w zaleznosci od l_sym
+% GENERUJ_CSV generuje plik csv z losowymi wartosciami cech
+% zakladamy ze mamy litery a, b , c, d ... w zaleznosci od liczby symboli
 % max_wartosc - wartosc maksymalna dla wartosci cechy
 % cechy beda losowane z przedzialu od 0 do max_wartosc
 

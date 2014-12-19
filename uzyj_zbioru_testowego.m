@@ -1,6 +1,11 @@
 function [blad, wektor_wynikowy] = uzyj_zbioru_testowego(ilosc_elem, macierz_przejsc, wektor_symboli)
-%UZYJ_ZBIORU_TESTOWEGO funkcja uzywa zbudowanego automatu do testowania
+%UZYJ_ZBIORU_TESTOWEGO uzywa zbudowanego automatu do testowania
 %symboli ze zbioru testowego(=wylosowanych wartosci ze zbioru uczacego)
+%Dla ka¿dego wektora ze zbioru odbywa siê symaluacja automatu i odpowiednio
+%zwiêksza siê b³¹d.
+%Funkcja zwraca ca³kowity b³¹d bêd¹cy stosunkiem b³ednie rozpoznanych
+%symboli do wszystkich symboli, a tak¿e wektor wynikowy zawieraj¹cy
+%rozpoznane symbole - u¿ywamy go do zapisania wyników w pliku Excela.
 
 global zbior_uczacy
 global liczba_kopii

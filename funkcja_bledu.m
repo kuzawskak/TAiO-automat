@@ -1,9 +1,11 @@
 function blad = funkcja_bledu(wektor_z_macierzy3d)
-  
+% FUNKCJA_BLEDU wykorzystywana jest przez PSO w celu obliczenia bledu dla
+% kazdej iteracji 
 % Macierz funkcji jest 3-wymiarowa, wygenerowana wczesniej przez funkcje
 %'generuj automat' Zbior uczacy wygenerowany wczesniej przez funkcje
-%'stworz_zbior_uczacy' Liczba symboli(=liczba wierszy) i Liczba kopii 
-%potrzebna do funkcji znajdz_symbol
+%'stworz_zbior_uczacy' Liczba symboli i Liczba kopii potrzebna do funkcji 
+% znajdz_symbol
+
 global dyskretyzacja;
 global liczba_wierszy;
 global zbior_uczacy;

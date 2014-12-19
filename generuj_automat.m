@@ -1,7 +1,7 @@
 function macierz_przejsc = generuj_automat(liczba_symboli, liczba_podzialow)
+% GENERUJ_AUTOMAT losuje 3-wymiarow¹ macierz funkcji przejscia dla
+% automatow determistycznego i niedetermistycznego
 
-% GENERUJ_AUTOMAT - losowanie funkcji przejscia automatow determistycznego
-% i niedetermistycznego
 global rodzaj_automatu;
 global ograniczenie_automatu_niedet;
 

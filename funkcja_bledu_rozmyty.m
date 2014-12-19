@@ -1,17 +1,20 @@
 function blad = funkcja_bledu_rozmyty(wektor_z_macierzy3d)
   
+% FUNKCJA_BLEDU_ROZMYTY wykorzystywana jest przez PSO w celu obliczenia bledu dla
+% kazdej iteracji 
 % Macierz funkcji jest 3-wymiarowa, wygenerowana wczesniej przez funkcje
 %'generuj automat' Zbior uczacy wygenerowany wczesniej przez funkcje
-%'stworz_zbior_uczacy' Liczba symboli(=liczba wierszy) i Liczba kopii 
-%potrzebna do funkcji znajdz_symbol
-global liczba_stron;
+%'stworz_zbior_uczacy' Liczba symboli i Liczba kopii potrzebna do funkcji 
+% znajdz_symbol
+
+global dyskretyzacja;
 global liczba_wierszy;
 global zbior_uczacy;
-global liczba_cech;
 global liczba_kopii;
 global liczba_st_odrzucajacych;
 blad = 0;
-  
+
+liczba_stron=dyskretyzacja;
 %zamien wektor na macierz 3-wymiarowa
 macierz = reshape(wektor_z_macierzy3d, liczba_wierszy, liczba_wierszy, liczba_stron);  
 macierz = generuj_macierz(macierz);
