@@ -62,18 +62,9 @@ for i = 1 : (length(wektor)/liczba_cech)
     pop_stan = nast_stan;
 end
 stan_wynikowy = nast_stan;
+
 end
 
-<<<<<<< HEAD
-
-function max=maximum(a,b)
-max=tanh(atanh(a)+atanh(b));
-end
-
-function min=minimum(a,b)
-min=1-(tanh(atanh(1-a)+atanh(1-b)));
-end
-=======
 function min=minimum(a,b)
 min=1-(tanh(atanh(1-a)+atanh(1-b)));
 end
@@ -81,4 +72,3 @@ end
 function max=maximum(a,b)
 max=tanh(atanh(a)+atanh(b));
 end
->>>>>>> master

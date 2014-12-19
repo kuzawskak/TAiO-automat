@@ -22,7 +22,7 @@ global a;
 global liczba_wierszy;
 %Przypisanie wartoœci
 plik_wejsciowy = 'plik_wejsciowy.dat';
-liczba_symboli_testowych=(rozmiar_zb_testowy*size(zbior_uczacy, 1))/100
+
 srednia=0;
 
 %start mierzenia czasu
@@ -34,12 +34,13 @@ if(typ_wejscia == -1)
     %zmapowane symbole zapisane w jednym wektorze
     wszystkie_symbole = mapowanie_symboli(plik_wejsciowy, liczba_symboli);
 else
-    [plik_wejsciowy, liczba_kopii, wszystkie_symbole]=czytaj_plik_excel(sciezka_zbior_uczacy);
+    [plik_wejsciowy, liczba_kopii, wszystkie_symbole]=czytaj_plik_excel(sciezka_zbior_uczacy,0);
     liczba_symboli=length(wszystkie_symbole);
     liczba_cech=size(plik_wejsciowy,2);
 end
 
-
+liczba_symboli_testowych=(rozmiar_zb_testowy*size(zbior_uczacy, 1))/100;
+liczba_symboli_testowych=ceil(liczba_symboli_testowych);
 %przygotowanie gotowego zbior uczacego do uzycia w automacie
 if(rodzaj_automatu==3)%rozmyty
     zbior_uczacy = stworz_rozmyty_zbior_uczacy(plik_wejsciowy, liczba_symboli, ...

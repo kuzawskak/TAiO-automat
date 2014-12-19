@@ -1,5 +1,6 @@
 function TAIO2014( varargin )
-%TAIO2014 - funkcja uruchamiaj¹ca program
+%TAIO2014 - funkcja uruchamiaj¹ca program, przypisuje wartosci odpowiednim
+%zmiennym
 
 global typ_wejscia;
 global sciezka_zbior_uczacy;
@@ -139,7 +140,7 @@ else
                     wariancja=cell2mat(varargin(i+1));
                 end
             case{'procRozmTest'}
-                if(sciezka_zbior_testujacy=='_')
+                if(sciezka_zbior_testujacy{1}=='_')
                     rozmiar_zb_testowy=cell2mat(varargin(i+1));
                 end
             case{'procRozmObce'}

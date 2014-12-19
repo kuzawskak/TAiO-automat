@@ -11,6 +11,7 @@ global liczba_wierszy;
 global zbior_uczacy;
 global liczba_kopii;
 global liczba_st_odrzucajacych;
+
 blad = 0;
 %zamien wektor na macierz 3-wymiarowa
 macierz = reshape(wektor_z_macierzy3d, liczba_wierszy, liczba_wierszy, dyskretyzacja);
@@ -34,5 +35,4 @@ for i = 1 : size(zbior_uczacy, 1)
         blad = blad + 1;
     end
 end
-
 end
