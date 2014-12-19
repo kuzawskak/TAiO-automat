@@ -91,19 +91,17 @@ else
         if(x ~= -1 && wynik(x) == 1)
             disp(sprintf('Otrzymano symbol: %c ', wektor_symboli(x)));
             wektor_wynikowy(i)=wektor_symboli(x);
-        elseif (czy_odrzucanie == 0 && znajdz_symbol_obcy(wynik) == 1)
-            disp(sprintf('Otrzymano symbol: odrzucony '));
-            wektor_wynikowy(i)= -1;
-        elseif(x ~= -1 && isempty(find(wynik, 1)) == 1)
+        elseif(x ~= -1 && isempty(find(wynik)) == 1)
             disp(sprintf('Otrzymano symbol: nieznany '));
-            wektor_wynikowy(i)= -1;
+            wektor_wynikowy(i)= '-';
         elseif(x ~= -1 && wynik(x) ~= 1)
             otrzymane_symbole = find(wynik, length(wektor_symboli));
-            disp('Otrzymano symbol: ');
-            for j = 1 : length(otrzymane_symbole)
-                disp(sprintf('%c ', wektor_symboli(j)));
-            end
+            disp('Otrzymano symbol: %c ', wektor_symboli(x));
             wektor_wynikowy(i)=wektor_symboli(pojedyncza_wartosc(otrzymane_symbole));
+        elseif (czy_odrzucanie == 0 && znajdz_symbol_obcy(wynik) == 1)
+            x
+            disp(sprintf('Otrzymano symbol: odrzucony '));
+            wektor_wynikowy(i)= '-';
         elseif(x == -1)
             otrzymane_symbole = find(wynik, length(wektor_symboli));
             disp('Otrzymano symbol: ');
@@ -113,7 +111,9 @@ else
             wektor_wynikowy(i)=wektor_symboli(pojedyncza_wartosc(otrzymane_symbole));
         end
         
-        if(x ~= -1 && znajdz_symbol_obcy(wynik) == 1)
+        if(x ~= -1 && wynik(x) == 1)
+            continue;
+        elseif(x ~= -1 && znajdz_symbol_obcy(wynik) == 1)
             blad = blad + 1;
         elseif(x ~= -1 && isempty(find(wynik, 1)) == 1)
             blad = blad + 1;
@@ -130,10 +130,8 @@ end
 wektor_wynikowy
 end
 
-function wartosc = pojedyncza_wartosc(wektor_wartosci)
+function r = pojedyncza_wartosc(wektor_wartosci)
 
 indeksy=find(wektor_wartosci);
 r=randi(length(indeksy));
-wartosc=wektor_wartosci(indeksy(r));
-
 end

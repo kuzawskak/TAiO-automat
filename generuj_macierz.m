@@ -8,7 +8,7 @@ global liczba_wierszy;
 global ograniczenie_automatu_niedet;
 global liczba_symboli;
 
-ograniczenie=(ograniczenie_automatu_niedet*liczba_symboli)/100;
+ograniczenie=ceil((ograniczenie_automatu_niedet*liczba_symboli)/100);
 liczba_stron=dyskretyzacja;
 
 if(rodzaj_automatu == 1) % Deterministyczny
